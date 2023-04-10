@@ -1,0 +1,17 @@
+.search-bar input{
+    border-radius: 30px;
+    width: 100%;
+    height: 46px;
+    background-color:white;
+    border:none;
+  padding: 10px 20px;
+  }
+  .search-bar button{
+    height: 46px;
+    background-color: rgb(25, 160, 52);
+    border: none;
+    color: white;
+    padding: 10px 26px;
+    border-radius: 30px;
+  }
+  
