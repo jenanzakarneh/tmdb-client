@@ -8,7 +8,7 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import MovieDetails from "./pages/MovieDetails";
 import Lists from "./pages/Lists";
-import PrivateRoute from "./components /PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute";
 const App = () => {
   return (
     <div className="parent-container">
