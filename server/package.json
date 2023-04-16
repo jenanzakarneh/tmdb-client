@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --inspect index.js"
-    
+    "dev": "nodemon --inspect app.js"
   },
   "author": "",
   "license": "ISC",
@@ -20,7 +19,7 @@
     "node-addon-api": "^6.0.0",
     "nodemon": "^2.0.21",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-jwt": "^4.0.1"
   },
   "keywords": [],
   "description": ""

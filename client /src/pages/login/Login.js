@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 const bcrypt = require("bcryptjs");
 
 function App() {
-  
   const [error, setErr] = useState();
   const navigate = useNavigate();
   const {
@@ -13,30 +12,29 @@ function App() {
     handleSubmit,
     formState: { errors },
   } = useForm();
- 
 
   const onSubmit = async (data) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    const saltRounds = 10;
-    const salt = bcrypt.genSaltSync(saltRounds); //another catch
-    const hashedPassword = bcrypt.hashSync(data.password, 10);
+    // const saltRounds = 10;
+    // const salt = bcrypt.genSaltSync(saltRounds); //another catch
+    // const hashedPassword = bcrypt.hashSync(data.password, 10);
     var requestOptions = {
       method: "POST",
       headers: myHeaders,
       body: JSON.stringify({
         email: data.email,
-        password: hashedPassword,
+        password: data.password,
       }),
       redirect: "follow",
     };
 
-    fetch("http://localhost:3001/api/login", requestOptions)
+    fetch("http://localhost:3001/users/login", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
-        if (result.status === "ok") {
-          localStorage.setItem("token", result.user);
+        if (result.success) {
+          localStorage.setItem("token", result.token);
           navigate("/home");
         } else setErr(result.error);
       })

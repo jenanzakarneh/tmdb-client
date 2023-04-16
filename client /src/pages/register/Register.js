@@ -17,28 +17,28 @@ function App() {
   const onSubmit = async (data) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    const saltRounds = 10;
-    const salt = bcrypt.genSaltSync(saltRounds); //another catch
-    const hashedPassword = bcrypt.hashSync(data.password, 10);
-    const pass = bcrypt.hashSync("jenan", salt);
-    console.log("hashedpassss", hashedPassword);
-    console.log("passsss", pass);
+    // const saltRounds = 10;
+    // const salt = bcrypt.genSaltSync(saltRounds); //another catch
+    // const hashedPassword = bcrypt.hashSync(data.password, 10);
+    // const pass = bcrypt.hashSync("jenan", salt);
+    // console.log("hashedpassss", hashedPassword);
+    // console.log("passsss", pass);
     var requestOptions = {
       method: "POST",
       headers: myHeaders,
       body: JSON.stringify({
         email: data.email,
         name: data.name,
-        password: hashedPassword,
+        password: data.password,
       }),
       redirect: "follow",
     };
 
-    fetch("http://localhost:3001/api/register", requestOptions)
+    fetch("http://localhost:3001/users/register", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
-        if (result.status === "ok") {
+        if (result.success) {
           alert("Your account created, go to login page ");
           navigate("/login");
         } else setErr(result.error);
